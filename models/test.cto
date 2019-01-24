@@ -1,0 +1,25 @@
+namespace health
+
+asset UserAccount identified by accountId {
+  o String accountId
+  --> User owner
+  o Integer height
+  o Integer weight
+  o Integer bmi
+}
+
+participant User identified by userId {
+  o String userId
+  o String firstName
+  o String lastName
+}
+
+transaction CalculateBMI {
+  --> UserAccount user
+}
+
+event BmiCalculatedEvent {
+  --> UserAccount user
+  o Integer OldBmi
+  o Integer NewBmi
+}
